@@ -17,9 +17,10 @@ connection = init_connection()
 def run_query(query):
     with connection.cursor() as cursor:
         cursor.execute(query)
-        yield cursor.fetchall()
+        results = cursor.fetchall()
         cursor.close()
         connection.close()
+        return results
 
 rows = run_query(''' SELECT * 
   FROM PUBLIC.landlords
