@@ -2,6 +2,8 @@
 
 import streamlit as st
 import psycopg2
+import pandas as pd
+import matplotlib.pyplot as plt
 
 # Initialize connection.
 # Uses st.experimental_singleton to only run once.
