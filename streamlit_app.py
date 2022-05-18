@@ -9,7 +9,12 @@ import matplotlib.pyplot as plt
 # Uses st.experimental_singleton to only run once.
 @st.experimental_singleton
 def init_connection():
-    return psycopg2.connect(**st.secrets["postgres"])
+#     return psycopg2.connect(**st.secrets["postgres"])
+      connection = psycopg2.connect(user="vyzgmpqsxeucnv",
+                                password="480540f32aa53c6f6850fee0add13f0ae8211a9aa7c98ed18fab701a829869df",
+                                host="ec2-54-157-79-121.compute-1.amazonaws.com",
+                                port="5432",
+                                database="d1evcvc2sccml6")
 
 # connection = init_connection()
 
