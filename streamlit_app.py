@@ -11,14 +11,15 @@ import matplotlib.pyplot as plt
 def init_connection():
     return psycopg2.connect(**st.secrets["postgres"])
 
-# connection = init_connection()
+connection = init_connection()
 
 # Perform query.
 # Uses st.experimental_memo to only rerun when the query changes or after 10 min.
 @st.experimental_memo(ttl=600)
 def run_query(query):
-    connection = init_connection()
-    with connection.cursor() as cursor:
+#     connection = init_connection()
+#     with connection.cursor() as cursor:
+        cursor = connection.cursor()
         cursor.execute(query)
         results = cursor.fetchall()
         df = pd.read_sql_query(query,connection)
