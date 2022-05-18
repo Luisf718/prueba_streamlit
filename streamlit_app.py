@@ -19,7 +19,7 @@ conn = init_connection()
 def run_query(query):
     with conn.cursor() as cur:
         cur.execute(query)
-        df = pd.read_sql_query(query,conn)
+#         df = pd.read_sql_query(query,conn)
         return cur.fetchall()
 
 rows = run_query("SELECT * from PUBLIC.accommodations;")
