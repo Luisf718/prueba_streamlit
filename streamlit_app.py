@@ -25,7 +25,7 @@ def run_query(query):
         df = pd.read_sql_query(query,connection)
         cursor.close()
         connection.close()
-    return df
+        return df
 
 # cursor = connection.cursor()
 # try:
