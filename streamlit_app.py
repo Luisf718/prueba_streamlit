@@ -22,7 +22,7 @@ def run_query(query):
         df = pd.read_sql_query(query,conn)
         return cur.fetchall()
 
-rows = run_query("SELECT * from mytable;")
+rows = run_query("SELECT * from PUBLIC.accommodations;")
 
 # Print results.
 for row in rows:
