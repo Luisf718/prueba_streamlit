@@ -20,7 +20,7 @@ def run_query(query):
     with connection.cursor() as cursor:
         cursor.execute(query)
         results = cursor.fetchall()
-        df = pd.read_sql_query(select_query,connection)
+        df = pd.read_sql_query(query,connection)
         cursor.close()
         connection.close()
         return results
