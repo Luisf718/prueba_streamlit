@@ -29,7 +29,7 @@ def run_query(query):
 cursor = connection.cursor()
 try:
   #Creamos el cursor para las operaciones de la base de datos
-  cursor = connection.cursor()
+#   cursor = connection.cursor()
   #Creamos una variable con el codigo sql que queremos que se ejecute
   select_query = '''SELECT *
 FROM PUBLIC.accommodations a
