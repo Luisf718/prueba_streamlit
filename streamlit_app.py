@@ -15,6 +15,7 @@ def init_connection():
                                 host="ec2-54-157-79-121.compute-1.amazonaws.com",
                                 port="5432",
                                 database="d1evcvc2sccml6")
+      return connection
 
 # connection = init_connection()
 
