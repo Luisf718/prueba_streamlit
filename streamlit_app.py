@@ -77,7 +77,7 @@ plt.xlabel('Ciudad')
 plt.ylabel('Visitas')
 plt.title('TOP 5 visitas por ciudad')
 st.write("Hola mundo")
-st.write(plt.show())
+plt.show()
 
 
 
