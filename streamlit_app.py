@@ -26,10 +26,7 @@ def run_query(query):
         connection.close()
         return df
  
-df = run_query('''SELECT *
-FROM PUBLIC.accommodations a
-JOIN PUBLIC.cities c ON c.id = a.id_city
-ORDER BY a.id;''')
+df = run_query("SELECT * FROM PUBLIC.accommodations a JOIN PUBLIC.cities c ON c.id = a.id_city ORDER BY a.id;")
 
 #Agrupamos por el nombre de las ciudades y sumamos las visitas que han tenido por toda la ciudad
 df_groupby_ciudad_visitas = df.groupby(by='name')['number_of_visits'].agg([sum, min, max])
