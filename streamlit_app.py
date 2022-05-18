@@ -26,6 +26,7 @@ def run_query(query):
         connection.close()
         return df
 
+
 try:
   connection1 = connection
   #Creamos el cursor para las operaciones de la base de datos
@@ -49,7 +50,7 @@ ORDER BY a.id;'''
 except (Exception, Error) as error:
   print("Error while connecting to PostgreSQL", error)
 finally:
-  if (connection):
+  if (connection1):
     cursor.close()
     connection.close()
     print("PostgreSQL connection is closed")
