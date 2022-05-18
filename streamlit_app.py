@@ -23,9 +23,9 @@ def run_query(query):
         df = pd.read_sql_query(query,connection)
         cursor.close()
         connection.close()
-        return results
+        return df
  
-rows = run_query('''SELECT *
+df = run_query('''SELECT *
 FROM PUBLIC.accommodations a
 JOIN PUBLIC.cities c ON c.id = a.id_city
 ORDER BY a.id;''')
