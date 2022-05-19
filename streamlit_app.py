@@ -66,5 +66,5 @@ fig = plt.show()
 
 number_of_visits_char = plt.figure()
 st.subheader('Top 5 Numero de visitas')
-# st.pyplot(fig)
-st.bar_chart(number_of_visits_char)
+st.pyplot(fig)
+# st.bar_chart(number_of_visits_char)
