@@ -57,6 +57,7 @@ df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.reset_index()
 #Ordenamos el df por el 'sum' para que esten ordenados del que tiene mas visitas al que tiene menos
 df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.sort_values('sum', ascending=False)
 
+st.subheader('Top 5 Numero de visitas')
 x = df_groupby_ciudad_visitas['name'][:5]
 y = df_groupby_ciudad_visitas['sum'][:5]
 plt.bar(x, y, color='red')
@@ -66,6 +67,6 @@ fig = plt.show()
 st.pyplot(fig)
 
 number_of_visits_char = plt.figure()
-st.subheader('Top 5 Numero de visitas')
+# st.subheader('Top 5 Numero de visitas')
 
-st.bar_chart(number_of_visits_char)
+# st.bar_chart(number_of_visits_char)
