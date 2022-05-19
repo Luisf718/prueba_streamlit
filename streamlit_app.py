@@ -71,8 +71,8 @@ plt.xlabel('Ciudad')
 plt.ylabel('Visitas')
 st.pyplot(fig_top10)
 
-chart_data = pd.DataFrame(
-     df_groupby_ciudad_visitas['sum'][:10],
-     columns=df_groupby_ciudad_visitas['name'][:10])
-
-st.line_chart(chart_data)
+#Creamos la visualización del tiempo promedio de estacia por ciudad
+#Creamos el dataframe
+df_average_night_per_city = df.groupby(by='name')['average_nights'].agg(['mean', 'median'])
+df_average_night_per_city = df_average_night_per_city.reset_index()
+st.dataframe(df_average_night_per_city)
