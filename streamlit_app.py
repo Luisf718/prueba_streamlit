@@ -5,43 +5,40 @@ import psycopg2
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Initialize connection.
-# Uses st.experimental_singleton to only run once.
-@st.experimental_singleton
-def init_connection():
-#     return psycopg2.connect(**st.secrets["postgres"])
-     return psycopg2.connect(user="vyzgmpqsxeucnv",
+try:
+  connection = psycopg2.connect(user="vyzgmpqsxeucnv",
                                 password="480540f32aa53c6f6850fee0add13f0ae8211a9aa7c98ed18fab701a829869df",
                                 host="ec2-54-157-79-121.compute-1.amazonaws.com",
                                 port="5432",
                                 database="d1evcvc2sccml6")
-
-# conn = init_connection()
-
-# Perform query.
-# Uses st.experimental_memo to only rerun when the query changes or after 10 min.
-@st.experimental_memo(ttl=600)
-def run_query(select_query):
-     conn = init_connection()
-     cursor = conn.cursor()
-     #Executamos el comando
-     cursor.execute(select_query)
-     connection.commit()
-     df = pd.read_sql_query(select_query,conn)
-     return df
-
-# rows = run_query("SELECT * from PUBLIC.accommodations;")
-
-# # Print results.
-# for row in rows:
-#     st.write(f"{row[0]} has a :{row[1]}:")
-
-
-
-df = run_query('''SELECT *
+  #Creamos el cursor para las operaciones de la base de datos
+  cursor = connection.cursor()
+  #Creamos una variable con el codigo sql que queremos que se ejecute
+  select_query = '''SELECT *
 FROM PUBLIC.accommodations a
 JOIN PUBLIC.cities c ON c.id = a.id_city
-ORDER BY a.id;''')
+ORDER BY a.id;'''
+  #Executamos el comando
+  cursor.execute(select_query)
+  connection.commit()
+  #con la funcion fetchall() podemos ver lo que retornaria la base de datos
+  #df_accommodations = cursor.fetchall()
+  #print(df_accommodations)
+  #Esto crea un data frame con la información que pediste de la base de datos
+  df = pd.read_sql_query(select_query,connection)
+  # print("Result ", cursor.fetchall())
+
+#Por si la conexion no fue exitosa
+except (Exception, Error) as error:
+  print("Error while connecting to PostgreSQL", error)
+finally:
+  if (connection):
+    cursor.close()
+    connection.close()
+    print("PostgreSQL connection is closed")
+
+
+
 
 
 st.subheader('Raw data')
