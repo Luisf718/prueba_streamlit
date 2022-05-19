@@ -43,7 +43,25 @@ if (connection):
 # st.subheader('Raw data')
 # st.dataframe(data=df)
 
-st.subheader('Top 5 Numero de visitas')
-number_of_visits_histogram = np.histogram(
-    df["number_of_visits"], bins=24, range=(0,24))[0]
-st.bar_chart(number_of_visits_histogram)
+# st.subheader('Top 5 Numero de visitas')
+# number_of_visits_histogram = np.histogram(
+#     df["number_of_visits"], bins=24, range=(0,24))[0]
+# st.bar_chart(number_of_visits_histogram)
+
+#Agrupamos por el nombre de las ciudades y sumamos las visitas que han tenido por toda la ciudad
+df_groupby_ciudad_visitas = df.groupby(by='name')['number_of_visits'].agg([sum, min, max])
+
+#Reseteamos los index para que 'name' se ponga como columna y no se quede en indice
+df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.reset_index()
+
+#Ordenamos el df por el 'sum' para que esten ordenados del que tiene mas visitas al que tiene menos
+df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.sort_values('sum', ascending=False)
+
+x = df_groupby_ciudad_visitas['name'][:5]
+y = df_groupby_ciudad_visitas['sum'][:5]
+plt.bar(x, y, color='red')
+plt.xlabel('Ciudad')
+plt.ylabel('Visitas')
+plt.title('TOP 5 visitas por ciudad')
+number_of_visits_char = plt.show()
+st.bar_chart(number_of_visits_char)
