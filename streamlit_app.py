@@ -17,7 +17,7 @@ cursor = connection.cursor()
 #Creamos una variable con el codigo sql que queremos que se ejecute
 select_query = '''SELECT *
 FROM PUBLIC.accommodations a
-JOIN PUBLIC.cities c ON c.id = a.id_city
+JOIN PUBLIC.cities c ON c.city_id = a.id_city
 ORDER BY a.id;'''
 #Executamos el comando
 cursor.execute(select_query)
