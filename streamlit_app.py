@@ -38,7 +38,8 @@ if (connection):
 
 
 
-'''Este es el codigo que se utiliza para la primer visualización, Top 5 Numero de visitas por ciudad '''
+#'''Este es el codigo que se utiliza para la primer visualización, Top 5 Numero de visitas por ciudad ''', con estas comillas se puede imprimir 
+#en pantalla de streamlit lo que quieras
 
 #Agrupamos por el nombre de las ciudades y sumamos las visitas que han tenido por toda la ciudad
 df_groupby_ciudad_visitas = df.groupby(by='name')['number_of_visits'].agg([sum, min, max])
