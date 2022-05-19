@@ -65,7 +65,7 @@ plt.xlabel('Ciudad')
 plt.ylabel('Visitas')
 fig = plt.show()
 st.pyplot(fig)
-st.write(fig)
+st.bar_chart(fig)
 
 number_of_visits_char = plt.figure()
 # st.subheader('Top 5 Numero de visitas')
