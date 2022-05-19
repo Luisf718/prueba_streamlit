@@ -51,16 +51,24 @@ df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.reset_index()
 df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.sort_values('sum', ascending=False)
 
 #Codigo para imprimir el grafico creado con matplotlib
-st.subheader('Top 5 Numero de visitas')
+st.subheader('TOP 5 visitas por ciudad')
 x = df_groupby_ciudad_visitas['name'][:5]
 y = df_groupby_ciudad_visitas['sum'][:5]
-fig = plt.figure(figsize = (10, 5))
+fig_top5 = plt.figure(figsize = (10, 5))
 plt.bar(x, y, color='red')
 plt.xlabel('Ciudad')
 plt.ylabel('Visitas')
 # plt.title('TOP 5 visitas por ciudad')
-st.pyplot(fig)
+st.pyplot(fig_top5)
 
+#Codigo para segunda visualización, Top 10 Numero de visitas por ciudad
+st.subheader('TOP 10 visitas por ciudad')
+x = df_groupby_ciudad_visitas['name'][:10]
+y = df_groupby_ciudad_visitas['sum'][:10]
+fig_top10 = plt.figure(figsize = (10, 5))
+plt.barh(x, y, color='blue')
+plt.xlabel('Ciudad')
+plt.ylabel('Visitas')
+st.pyplot(fig_top10)
 
   
-
