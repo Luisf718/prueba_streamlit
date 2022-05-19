@@ -43,7 +43,7 @@ finally:
 
 
 st.subheader('Raw data')
-st.write(df)
+st.dataframe(data=df)
 
 
 
