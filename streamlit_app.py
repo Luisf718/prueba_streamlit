@@ -24,6 +24,9 @@ conn = init_connection()
 def run_query(query):
     with conn.cursor() as cur:
         cur.execute(query)
+        conn.commit()
+        cur.close()
+        conn.close()
         df = pd.read_sql_query(query,conn)
         return df
 
