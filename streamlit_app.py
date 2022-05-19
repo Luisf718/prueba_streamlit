@@ -64,7 +64,7 @@ fig = plt.figure(figsize = (10, 5))
 plt.bar(x, y, color='red')
 plt.xlabel('Ciudad')
 plt.ylabel('Visitas')
-plt.title('TOP 5 visitas por ciudad')
+# plt.title('TOP 5 visitas por ciudad')
 st.pyplot(fig)
 
 
