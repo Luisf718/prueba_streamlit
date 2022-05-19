@@ -21,15 +21,14 @@ def init_connection():
 # Perform query.
 # Uses st.experimental_memo to only rerun when the query changes or after 10 min.
 @st.experimental_memo(ttl=600)
-def run_query(query):
-    conn = init_connection()
-    with conn.cursor() as cur:
-        cur.execute(query)
-#         conn.commit()
-#         cur.close()
-#         conn.close()
-        df = pd.read_sql_query(query,conn)
-        return df
+def run_query(select_query):
+     conn = init_connection()
+     cursor = conn.cursor()
+     #Executamos el comando
+     cursor.execute(select_query)
+     connection.commit()
+     df = pd.read_sql_query(select_query,conn)
+     return df
 
 # rows = run_query("SELECT * from PUBLIC.accommodations;")
 
@@ -39,8 +38,10 @@ def run_query(query):
 
 
 
-df = run_query("SELECT * FROM PUBLIC.accommodations a JOIN PUBLIC.cities c ON c.id = a.id_city ORDER BY a.id;")
-
+df = run_query('''SELECT *
+FROM PUBLIC.accommodations a
+JOIN PUBLIC.cities c ON c.id = a.id_city
+ORDER BY a.id;''')
 
 
 st.subheader('Raw data')
