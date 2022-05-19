@@ -4,6 +4,7 @@ import streamlit as st
 import psycopg2
 import pandas as pd
 import matplotlib.pyplot as plt
+from psycopg2 import Error
 
 try:
   connection = psycopg2.connect(user="vyzgmpqsxeucnv",
