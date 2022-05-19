@@ -54,7 +54,7 @@ df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.sort_values('sum', ascendi
 st.subheader('TOP 5 visitas por ciudad')
 x = df_groupby_ciudad_visitas['name'][:5]
 y = df_groupby_ciudad_visitas['sum'][:5]
-fig_top5 = plt.figure(figsize = (10, 5))
+fig_top5 = plt.figure(figsize = (5, 5))
 plt.bar(x, y, color='red')
 plt.xlabel('Ciudad')
 plt.ylabel('Visitas')
@@ -65,7 +65,7 @@ st.pyplot(fig_top5)
 st.subheader('TOP 10 visitas por ciudad')
 x = df_groupby_ciudad_visitas['name'][:10]
 y = df_groupby_ciudad_visitas['sum'][:10]
-fig_top10 = plt.figure(figsize = (10, 5))
+fig_top10 = plt.figure(figsize = (5, 5))
 plt.barh(x, y, color='blue')
 plt.xlabel('Ciudad')
 plt.ylabel('Visitas')
