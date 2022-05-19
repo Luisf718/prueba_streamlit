@@ -27,7 +27,7 @@ connection.commit()
 #print(df_accommodations)
 #Esto crea un data frame con la información que pediste de la base de datos
 df = pd.read_sql_query(select_query,connection)
-st.write("Result: ", cursor.fetchall())
+# st.write("Result: ", cursor.fetchall())
 
 
 if (connection):
