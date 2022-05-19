@@ -16,14 +16,15 @@ def init_connection():
                                 port="5432",
                                 database="d1evcvc2sccml6")
 
-conn = init_connection()
+# conn = init_connection()
 
 # Perform query.
 # Uses st.experimental_memo to only rerun when the query changes or after 10 min.
 @st.experimental_memo(ttl=600)
 def run_query(query):
+    conn = init_connection()
     with conn.cursor() as cur:
-#         cur.execute(query)
+        cur.execute(query)
 #         conn.commit()
 #         cur.close()
 #         conn.close()
