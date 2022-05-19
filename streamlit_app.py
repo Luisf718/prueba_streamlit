@@ -62,7 +62,8 @@ y = df_groupby_ciudad_visitas['sum'][:5]
 plt.bar(x, y, color='red')
 plt.xlabel('Ciudad')
 plt.ylabel('Visitas')
-
-number_of_visits_char = plt.show()
+fig = plt.show()
+st.pyplot(fig)
+number_of_visits_char = plt.figure()
 st.subheader('Top 5 Numero de visitas')
 st.bar_chart(number_of_visits_char)
