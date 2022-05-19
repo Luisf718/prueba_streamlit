@@ -38,15 +38,7 @@ if (connection):
 
 
 
-
-# Con esto imprimes el dataframe
-# st.subheader('Raw data')
-# st.dataframe(data=df)
-
-# st.subheader('Top 5 Numero de visitas')
-# number_of_visits_histogram = np.histogram(
-#     df["number_of_visits"], bins=24, range=(0,24))[0]
-# st.bar_chart(number_of_visits_histogram)
+'''Este es el codigo que se utiliza para la primer visualización, Top 5 Numero de visitas por ciudad '''
 
 #Agrupamos por el nombre de las ciudades y sumamos las visitas que han tenido por toda la ciudad
 df_groupby_ciudad_visitas = df.groupby(by='name')['number_of_visits'].agg([sum, min, max])
@@ -57,6 +49,7 @@ df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.reset_index()
 #Ordenamos el df por el 'sum' para que esten ordenados del que tiene mas visitas al que tiene menos
 df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.sort_values('sum', ascending=False)
 
+#Codigo para imprimir el grafico creado con matplotlib
 st.subheader('Top 5 Numero de visitas')
 x = df_groupby_ciudad_visitas['name'][:5]
 y = df_groupby_ciudad_visitas['sum'][:5]
@@ -70,7 +63,3 @@ st.pyplot(fig)
 
   
 
-number_of_visits_char = plt.figure()
-# st.subheader('Top 5 Numero de visitas')
-
-# st.bar_chart(number_of_visits_char)
