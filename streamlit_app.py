@@ -31,9 +31,9 @@ st.write("Result: ", cursor.fetchall())
 
 
 if (connection):
-cursor.close()
-connection.close()
-print("PostgreSQL connection is closed")
+  cursor.close()
+  connection.close()
+  print("PostgreSQL connection is closed")
 
 
 
