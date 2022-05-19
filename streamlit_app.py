@@ -45,5 +45,5 @@ if (connection):
 
 st.subheader('Top 5 Numero de visitas')
 number_of_visits_histogram = np.histogram(
-    df[number_of_visits], bins=24, range=(0,24))[0]
+    df["number_of_visits"], bins=24, range=(0,24))[0]
 st.bar_chart(number_of_visits_histogram)
