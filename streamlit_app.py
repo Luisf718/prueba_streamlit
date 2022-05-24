@@ -76,3 +76,57 @@ st.pyplot(fig_top10)
 df_average_night_per_city = df.groupby(by='name')['average_nights'].agg(['mean', 'median'])
 df_average_night_per_city = df_average_night_per_city.reset_index()
 st.dataframe(df_average_night_per_city)
+
+# import the circlify library
+import circlify
+
+# compute circle positions:
+circles = circlify.circlify(
+    df_average_night_per_city['mean'].tolist(), 
+    show_enclosure=False, 
+    target_enclosure=circlify.Circle(x=0, y=0, r=1)
+)
+
+#Create just a figure and only one subplot
+fig, ax = plt.subplots(figsize=(10,10))
+
+# Title
+ax.set_title('Promedio de noches por ciudad')
+
+# Remove axes
+ax.axis('off')
+
+# Find axis boundaries
+lim = max(
+    max(
+        abs(circle.x) + circle.r,
+        abs(circle.y) + circle.r,
+    )
+    for circle in circles
+)
+plt.xlim(-lim, lim)
+plt.ylim(-lim, lim)
+
+# list of labels
+labels = df_average_night_per_city['name']
+
+
+colors = [
+          'yellow',
+          'blue',
+          'red',
+          'grey',
+          'purple',
+          'green',
+          'white',
+          'pink',
+          'orange',
+          '#30D5C8',
+          '#C8A2C8'
+]
+count = 0
+for circle, label in zip(circles, labels):
+    x, y, r = circle
+    ax.add_patch(plt.Circle((x, y), r, alpha=1, linewidth=2, facecolor=colors[count], edgecolor="black"))
+    plt.annotate(label, (x,y ) ,va='center', ha='center', bbox=dict(facecolor=colors[count], edgecolor=colors[count]))
+    count+=1
