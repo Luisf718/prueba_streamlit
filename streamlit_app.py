@@ -88,7 +88,7 @@ circles = circlify.circlify(
 )
 
 #Create just a figure and only one subplot
-fig, ax = plt.subplots(figsize=(10,10))
+fig_burbujas, ax = plt.subplots(figsize=(10,10))
 
 # Title
 ax.set_title('Promedio de noches por ciudad')
@@ -129,4 +129,5 @@ for circle, label in zip(circles, labels):
     x, y, r = circle
     ax.add_patch(plt.Circle((x, y), r, alpha=1, linewidth=2, facecolor=colors[count], edgecolor="black"))
     plt.annotate(label, (x,y ) ,va='center', ha='center', bbox=dict(facecolor=colors[count], edgecolor=colors[count]))
+    st.pyplot(fig_burbujas)
     count+=1
