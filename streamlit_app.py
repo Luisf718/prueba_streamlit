@@ -137,4 +137,4 @@ st.pyplot(fig_burbujas)
 df_alojamientos_totales = df['id'].agg(['count','sum'])
 total_accommodations = df_alojamientos_totales['count']
 st.subheader('Total de alojamientos')
-st.write(total_accommodations)
+st.subheader(total_accommodations)
