@@ -51,7 +51,7 @@ df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.reset_index()
 df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.sort_values('sum', ascending=False)
 
 #Codigo para imprimir el grafico creado con matplotlib
-# st.subheader('TOP 5 visitas por ciudad')
+# st.header('TOP 5 visitas por ciudad')
 # x = df_groupby_ciudad_visitas['name'][:5]
 # y = df_groupby_ciudad_visitas['sum'][:5]
 # fig_top5 = plt.figure(figsize = (10, 5))
@@ -62,7 +62,7 @@ df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.sort_values('sum', ascendi
 # st.pyplot(fig_top5)
 
 #Codigo para segunda visualización, Top 10 Numero de visitas por ciudad
-st.subheader('Numero de visitas por ciudad')
+st.header('Numero de visitas por ciudad')
 x = df_groupby_ciudad_visitas['name']
 y = df_groupby_ciudad_visitas['sum']
 fig_visitas = plt.figure(figsize = (10, 5))
@@ -130,11 +130,11 @@ for circle, label in zip(circles, labels):
     ax.add_patch(plt.Circle((x, y), r, alpha=1, linewidth=2, facecolor=colors[count], edgecolor="black"))
     plt.annotate(label, (x,y ) ,va='center', ha='center', bbox=dict(facecolor=colors[count], edgecolor=colors[count]))
     count+=1
-st.subheader('Promedio de noches por ciudad')
+st.header('Promedio de noches por ciudad')
 st.pyplot(fig_burbujas)
 
 #Hacemos la visualizacion de el total de los alojamientos
 df_alojamientos_totales = df['id'].agg(['count','sum'])
 total_accommodations = df_alojamientos_totales['count']
-st.subheader('Total de alojamientos')
+st.header('Total de alojamientos')
 st.subheader(total_accommodations)
