@@ -132,3 +132,9 @@ for circle, label in zip(circles, labels):
     count+=1
 st.subheader('Promedio de noches por ciudad')
 st.pyplot(fig_burbujas)
+
+#Hacemos la visualizacion de el total de los alojamientos
+df_alojamientos_totales = df['id'].agg(['count','sum'])
+total_accommodations = df_alojamientos_totales['count']
+st.subheader('Total de alojamientos')
+st.write(total_accommodations)
