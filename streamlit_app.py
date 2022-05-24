@@ -75,7 +75,6 @@ st.pyplot(fig_top10)
 #Creamos el dataframe
 df_average_night_per_city = df.groupby(by='name')['average_nights'].agg(['mean', 'median'])
 df_average_night_per_city = df_average_night_per_city.reset_index()
-st.dataframe(df_average_night_per_city)
 
 # import the circlify library
 import circlify
@@ -91,7 +90,8 @@ circles = circlify.circlify(
 fig_burbujas, ax = plt.subplots(figsize=(10,10))
 
 # Title
-ax.set_title('Promedio de noches por ciudad')
+#Este titulo va dentro de la visualizacion, del cuadro blanco 
+# ax.set_title('Promedio de noches por ciudad')
 
 # Remove axes
 ax.axis('off')
@@ -110,7 +110,7 @@ plt.ylim(-lim, lim)
 # list of labels
 labels = df_average_night_per_city['name']
 
-
+#Esto es para que el ciclo for cambie de color las burbujas y sean todas de diferente color
 colors = [
           'yellow',
           'blue',
