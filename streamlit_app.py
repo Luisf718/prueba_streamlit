@@ -62,7 +62,7 @@ plt.ylabel('Visitas')
 st.pyplot(fig_visitas)
 
 """Podemos notar que cancun tiene muchas menos visitas, esto es raro porque en cancun normalmente hay muchos turistas"""
-st.write('Julian')
+
 #Creamos la visualizacion de los alojamientos que hay por ciudad
 #Agrupamos por ciudad y contamos el numero que hay por ciudad
 df_alojamientos_por_ciudad = df.groupby('name')['id'].agg(['count','sum'])
