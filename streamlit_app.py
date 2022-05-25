@@ -50,7 +50,7 @@ df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.reset_index()
 #Ordenamos el df por el 'sum' para que esten ordenados del que tiene mas visitas al que tiene menos
 df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.sort_values('sum', ascending=False)
 
-#Codigo para segunda visualización, Top 10 Numero de visitas por ciudad
+#Codigo para visuzalizacion de numero de visitas por ciudad
 st.header('Numero de visitas por ciudad')
 x = df_groupby_ciudad_visitas['name']
 y = df_groupby_ciudad_visitas['sum']
@@ -61,7 +61,9 @@ plt.xlabel('Ciudad')
 plt.ylabel('Visitas')
 st.pyplot(fig_visitas)
 
-#Creamos la visualizacion de de los alojamientos que hay por ciudad
+"""Podemos notar que cancun tiene muchas menos visitas, esto es raro porque en cancun normalmente hay muchos turistas"""
+
+#Creamos la visualizacion de los alojamientos que hay por ciudad
 #Agrupamos por ciudad y contamos el numero que hay por ciudad
 df_alojamientos_por_ciudad = df.groupby('name')['id'].agg(['count','sum'])
 
@@ -81,6 +83,9 @@ plt.ylabel('Ciudad')
 plt.xlabel('Numero de alojamientos')
 plt.title('Alojamientos por ciudad')
 st.pyplot(fig_alojamientos)
+
+"""En esta grafica se muestra que Cancun es donde Airbnb tiene menos alojamientos, esta puede ser una oportunidad para que tengamos mas alojamientos en Cancun y cubrir la
+la demanda"""
 
 #Creamos la visualización del tiempo promedio de estacia por ciudad
 #Creamos el dataframe
