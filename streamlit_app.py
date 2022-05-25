@@ -85,7 +85,7 @@ st.header('Alojamientos por ciudad')
 x = df_alojamientos_por_ciudad['name']
 y = df_alojamientos_por_ciudad['count']
 fig_alojamientos = plt.figure(figsize = (10, 5))
-plt.barh(x, y, color='blue')
+plt.barh(x, y, color='green')
 plt.xlabel('Ciudad')
 plt.ylabel('Numero de alojamientos')
 plt.title('Alojamientos por ciudad')
