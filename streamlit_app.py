@@ -71,6 +71,26 @@ plt.xlabel('Ciudad')
 plt.ylabel('Visitas')
 st.pyplot(fig_visitas)
 
+#Creamos la visualizacion de de los alojamientos que hay por ciudad
+#Agrupamos por ciudad y contamos el numero que hay por ciudad
+df_alojamientos_por_ciudad = df.groupby('name')['id'].agg(['count','sum'])
+
+#Reseteamos el index para poder manipular mejor el dataframe
+df_alojamientos_por_ciudad = df_alojamientos_por_ciudad.reset_index()
+
+#Ordenamos el dataframe para que vaya de manera ascendente
+df_alojamientos_por_ciudad = df_alojamientos_por_ciudad.sort_values('count',ascending=True)
+
+st.header('Alojamientos por ciudad')
+x = df_alojamientos_por_ciudad['name']
+y = df_alojamientos_por_ciudad['count']
+fig_alojamientos = plt.figure(figsize = (10, 5))
+plt.barh(x, y, color='blue')
+plt.xlabel('Ciudad')
+plt.ylabel('Numero de alojamientos')
+plt.title('Alojamientos por ciudad')
+st.pyplot(fig_alojamientos)
+
 #Creamos la visualización del tiempo promedio de estacia por ciudad
 #Creamos el dataframe
 df_average_night_per_city = df.groupby(by='name')['average_nights'].agg(['mean', 'median'])
