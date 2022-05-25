@@ -72,8 +72,8 @@ df_alojamientos_por_ciudad = df_alojamientos_por_ciudad.reset_index()
 df_alojamientos_por_ciudad = df_alojamientos_por_ciudad.sort_values('count',ascending=False)
 
 st.header('Alojamientos por ciudad')
-y = df_alojamientos_por_ciudad['name']
-x = df_alojamientos_por_ciudad['count']
+x = df_alojamientos_por_ciudad['name']
+y = df_alojamientos_por_ciudad['count']
 fig_alojamientos = plt.figure(figsize = (10, 5))
 plt.barh(x, y, color='green')
 plt.xticks(rotation='vertical')
