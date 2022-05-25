@@ -77,8 +77,8 @@ y = df_alojamientos_por_ciudad['count']
 fig_alojamientos = plt.figure(figsize = (10, 5))
 plt.barh(x, y, color='green')
 plt.xticks(rotation='vertical')
-plt.xlabel('Ciudad')
-plt.ylabel('Numero de alojamientos')
+plt.ylabel('Ciudad')
+plt.xlabel('Numero de alojamientos')
 plt.title('Alojamientos por ciudad')
 st.pyplot(fig_alojamientos)
 
