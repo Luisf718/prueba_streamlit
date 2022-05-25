@@ -50,17 +50,6 @@ df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.reset_index()
 #Ordenamos el df por el 'sum' para que esten ordenados del que tiene mas visitas al que tiene menos
 df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.sort_values('sum', ascending=False)
 
-#Codigo para imprimir el grafico creado con matplotlib
-# st.header('TOP 5 visitas por ciudad')
-# x = df_groupby_ciudad_visitas['name'][:5]
-# y = df_groupby_ciudad_visitas['sum'][:5]
-# fig_top5 = plt.figure(figsize = (10, 5))
-# plt.bar(x, y, color='red')
-# plt.xlabel('Ciudad')
-# plt.ylabel('Visitas')
-# # plt.title('TOP 5 visitas por ciudad')
-# st.pyplot(fig_top5)
-
 #Codigo para segunda visualización, Top 10 Numero de visitas por ciudad
 st.header('Numero de visitas por ciudad')
 x = df_groupby_ciudad_visitas['name']
@@ -79,14 +68,14 @@ df_alojamientos_por_ciudad = df.groupby('name')['id'].agg(['count','sum'])
 #Reseteamos el index para poder manipular mejor el dataframe
 df_alojamientos_por_ciudad = df_alojamientos_por_ciudad.reset_index()
 
-#Ordenamos el dataframe para que vaya de manera ascendente
-df_alojamientos_por_ciudad = df_alojamientos_por_ciudad.sort_values('count',ascending=True)
+#Ordenamos el dataframe para que vaya de manera descendente
+df_alojamientos_por_ciudad = df_alojamientos_por_ciudad.sort_values('count',ascending=False)
 
 st.header('Alojamientos por ciudad')
-x = df_alojamientos_por_ciudad['name']
-y = df_alojamientos_por_ciudad['count']
+y = df_alojamientos_por_ciudad['name']
+x = df_alojamientos_por_ciudad['count']
 fig_alojamientos = plt.figure(figsize = (10, 5))
-plt.bar(x, y, color='green')
+plt.barh(x, y, color='green')
 plt.xticks(rotation='vertical')
 plt.xlabel('Ciudad')
 plt.ylabel('Numero de alojamientos')
