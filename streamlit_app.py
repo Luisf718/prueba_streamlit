@@ -189,7 +189,7 @@ fig_piramide_users = gp.Figure()
 fig_piramide_users.add_trace(gp.Bar(y= y_r, x = X_M,
                      name = 'Male',
                      orientation = 'h'))
-  
+
 # Adding Female data to the figure
 fig_piramide_users.add_trace(gp.Bar(y = y_r, x = X_F,
                      name = 'Female', orientation = 'h'))
@@ -208,4 +208,5 @@ fig_piramide_users.update_layout(
                               title_font_size = 14)
                  )
 # st.pyplot(fig_piramide_users)
-fig_piramide_users.show()
+# fig_piramide_users.show()
+st.plotly_char(fig_piramide_users)
