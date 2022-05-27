@@ -208,4 +208,4 @@ fig_piramide_users.update_layout(
                               title_font_size = 14)
                  )
 # st.pyplot(fig_piramide_users)
-fig.show()
+fig_piramide_users.show()
