@@ -196,7 +196,7 @@ fig_piramide_users.add_trace(gp.Bar(y = y_r, x = X_F,
 
 # Updating the layout for our graph
 fig_piramide_users.update_layout(
-                 title_font_size = 22, barmode = 'relative',
+                 barmode = 'relative',
                  bargap = 0.0, bargroupgap = 0,
                  xaxis = dict(tickvals = [-10, -25, -45,
                                           0, 10, 25, 45],
