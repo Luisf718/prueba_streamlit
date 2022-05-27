@@ -6,6 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from psycopg2 import Error
 import numpy as np
+import plotly.graph_objects as gp
 
 def conection_sql(query:str):
   connection = psycopg2.connect(user="vyzgmpqsxeucnv",
@@ -179,3 +180,31 @@ y_r=df_t2['Rango']
 X_M=df_t2['Male']
 X_F=df_t2['Female'] * -1
 
+#Creamos el grafico
+st.header('Piramide Poblacional de Usuarios')
+# Creating instance of the figure
+fig_piramide_users = gp.Figure()
+  
+# Adding Male data to the figure
+fig_piramide_users.add_trace(gp.Bar(y= y_r, x = X_M,
+                     name = 'Male',
+                     orientation = 'h'))
+  
+# Adding Female data to the figure
+fig_piramide_users.add_trace(gp.Bar(y = y_r, x = X_F,
+                     name = 'Female', orientation = 'h'))
+
+# Updating the layout for our graph
+fig_piramide_users.update_layout(
+                 title_font_size = 22, barmode = 'relative',
+                 bargap = 0.0, bargroupgap = 0,
+                 xaxis = dict(tickvals = [-10, -25, -45,
+                                          0, 10, 25, 45],
+                                
+                              ticktext = ['10', '25', '45', '0', 
+                                          '10', '25', '45'],
+                                
+                              title = 'Population age',
+                              title_font_size = 14)
+                 )
+st.pyplot(fig_piramide_users)
