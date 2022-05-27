@@ -207,4 +207,5 @@ fig_piramide_users.update_layout(
                               title = 'Population age',
                               title_font_size = 14)
                  )
-st.pyplot(fig_piramide_users)
+# st.pyplot(fig_piramide_users)
+fig.show()
