@@ -209,4 +209,4 @@ fig_piramide_users.update_layout(
                  )
 # st.pyplot(fig_piramide_users)
 # fig_piramide_users.show()
-st.plotly_char(fig_piramide_users)
+st.plotly_chart(fig_piramide_users)
