@@ -150,3 +150,32 @@ df_alojamientos_totales = df['id'].agg(['count','sum'])
 total_accommodations = df_alojamientos_totales['count']
 st.header('Total de alojamientos')
 st.subheader(total_accommodations)
+
+#Empezamos a contruir la piramide poblacional
+#Ponemos el query en la función para que tengamos el dataframe de los usuarios
+df_users = conection_sql('''SELECT *
+FROM PUBLIC.users u
+JOIN PUBLIC.cities c ON c.city_id = u.city_id
+ORDER BY u.user_id;''')
+
+#Agrupamos por genero y edad
+df_piramide_poblacional = df_users.groupby(['gender', 'age'])['user_id'].agg(['count'])
+df_test=df_users.groupby(['gender', 'age'])['user_id']
+df_test=df_users[['gender','age']]
+
+#Creamos los rangos de edades
+df_test.loc[(df_test['age'] >=18) & (df_test['age'] <22) , 'Rango'] = '18-27' 
+df_test.loc[(df_test['age'] >=28) & (df_test['age'] <32) , 'Rango'] = '28-37'
+df_test.loc[(df_test['age'] >=38) & (df_test['age'] <42) , 'Rango'] = '38-47' 
+df_test.loc[(df_test['age'] >=48) & (df_test['age'] <52) , 'Rango'] = '48-57' 
+df_test.loc[(df_test['age'] >=58) & (df_test['age'] <62) , 'Rango'] = '58-67' 
+df_test.loc[(df_test['age'] >=68) & (df_test['age'] <72) , 'Rango'] = '68-77'
+df_test.loc[(df_test['age'] >=78) & (df_test['age'] <80) , 'Rango'] = '78-+'
+
+df_test.insert(2, "prev", 1, True)
+df_t2=pd.pivot_table(df_test,index="Rango", columns="gender", values="prev", aggfunc=np.sum)
+df_t2.reset_index(inplace=True)
+y_r=df_t2['Rango']
+X_M=df_t2['Male']
+X_F=df_t2['Female'] * -1
+
