@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from psycopg2 import Error
 import numpy as np
 
-def conection_sql(query:str):
+def conection_sql(query):
   connection = psycopg2.connect(user="vyzgmpqsxeucnv",
                             password="480540f32aa53c6f6850fee0add13f0ae8211a9aa7c98ed18fab701a829869df",
                             host="ec2-54-157-79-121.compute-1.amazonaws.com",
