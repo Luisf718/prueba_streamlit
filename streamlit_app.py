@@ -210,3 +210,99 @@ fig_piramide_users.update_layout(
 # st.pyplot(fig_piramide_users)
 # fig_piramide_users.show()
 st.plotly_chart(fig_piramide_users)
+
+#Crear aqui la piramide de los host
+
+#Parte de Cristhian 
+# == Min and max prices by city
+
+df_cities = conection_sql('''select min(a.price), max(a.price), c."name"
+   	from public.accommodations a
+   	join public.cities c on c.city_id = a.id_city 
+   	group by c."name"
+   	order by c."name"''')
+
+df_cities = df['name']
+df_min = df['min']
+df_max = df['max']
+
+st.subheader('Min and max prices by city')
+
+fig_min_max, ax1 = plt.subplots(figsize=(10,10))
+
+color = 'tab:red'
+ax1.set_xlabel('cities')
+ax1.set_ylabel('min prices', color=color)
+ax1.plot(df_cities, df_min, color=color)
+ax1.tick_params(axis='y', labelcolor=color)
+
+ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+
+color = 'tab:blue'
+ax2.set_ylabel('max prices', color=color)  # we already handled the x-label with ax1
+ax2.plot(df_cities, df_max, color=color)
+ax2.tick_params(axis='y', labelcolor=color)
+
+fig_min_max.tight_layout()  # otherwise the right y-label is slightly clipped
+st.pyplot(fig_min_max)
+
+# =
+
+
+# == Guest capacity by city
+
+df = conection_sql('''select PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY a.person_capacity) capacity, c."name"
+   from public.accommodations a
+   join public.cities c on c.city_id = a.id_city 
+   group by c."name"
+   order by capacity desc;''')
+
+df_cities = df['name']
+df_capacity = df['capacity']
+
+st.subheader('Guest capacity by city')
+
+df = pd.DataFrame({'cities':df['capacity'], 'group':df['name'] })
+
+fig_pie = plt.figure(figsize = (10, 5))
+squarify.plot(sizes=df['cities'], label=df['group'], alpha=.8 )
+plt.axis('off')
+st.pyplot(fig_pie)
+
+# Pie chart
+# guest_capacity_city, ax1 = plt.subplots()
+# ax1.pie(df_capacity, labels=df_cities, autopct='%.1f')
+# st.pyplot(guest_capacity_city)
+
+# =
+
+# == Average stars by city
+
+df = conection_sql('''select avg(a.star_rating), count(a.star_rating), c."name"
+   from public.accommodations a
+   join public.cities c on c.city_id = a.id_city 
+   group by c."name"
+   order by c."name";''')
+
+df_cities = df['name']
+df_starts_avg = df['avg']
+df_starts_count = df['count']
+
+st.subheader('Guest capacity by city')
+
+x = df_cities
+y = df_starts_avg
+s = df_starts_count
+
+fig_scatter = plt.figure(figsize = (12, 8))
+plt.scatter(x, y, s, c="b", alpha=0.5, label="Stars")
+plt.xlabel("Cities")
+plt.ylabel("Qualification")
+plt.legend(loc='upper left')
+
+for i, txt in enumerate(s):
+    x1 = i+0.2
+    plt.annotate(txt, (x1, y[i]))
+
+st.pyplot(fig_scatter)
+
