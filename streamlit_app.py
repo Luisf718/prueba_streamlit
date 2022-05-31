@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from psycopg2 import Error
 import numpy as np
 import plotly.graph_objects as gp
+import squarify
 
 def conection_sql(query:str):
   connection = psycopg2.connect(user="vyzgmpqsxeucnv",
