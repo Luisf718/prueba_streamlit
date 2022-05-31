@@ -150,7 +150,7 @@ st.pyplot(fig_burbujas)
 #Hacemos la visualizacion de el total de los alojamientos
 df_alojamientos_totales = df['id'].agg(['count','sum'])
 total_accommodations = df_alojamientos_totales['count']
-st.header('Total de alojamientos')
+st.header('Total accommodations')
 st.subheader(total_accommodations)
 
 #Empezamos a contruir la piramide poblacional
@@ -182,7 +182,7 @@ X_M=df_t2['Male']
 X_F=df_t2['Female'] * -1
 
 #Creamos el grafico
-st.header('Piramide Poblacional de Usuarios')
+st.header('Population pyramid')
 # Creating instance of the figure
 fig_piramide_users = gp.Figure()
   
