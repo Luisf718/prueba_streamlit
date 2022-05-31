@@ -289,7 +289,7 @@ df_cities = df['name']
 df_starts_avg = df['avg']
 df_starts_count = df['count']
 
-st.subheader('Guest capacity by city')
+st.subheader('Average stars by city')
 
 x = df_cities
 y = df_starts_avg
