@@ -52,12 +52,12 @@ df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.sort_values('sum', ascendi
 st.header('Numero de visitas por ciudad')
 x = df_groupby_ciudad_visitas['name']
 y = df_groupby_ciudad_visitas['sum']
-fig_visitas = plt.figure(figsize = (5, 5))
+fig_visitas = plt.figure(figsize = (10, 10))
 plt.bar(x, y, color='blue')
 plt.xticks(rotation='vertical')
 plt.xlabel('Ciudad')
 plt.ylabel('Visitas')
-col1, col2 = st.columns((2,1))
+col1, col2 = st.columns((1,2))
 
 with col1:
   st.pyplot(fig_visitas)
@@ -78,7 +78,7 @@ df_alojamientos_por_ciudad = df_alojamientos_por_ciudad.sort_values('count',asce
 st.header('Alojamientos por ciudad')
 x = df_alojamientos_por_ciudad['name']
 y = df_alojamientos_por_ciudad['count']
-fig_alojamientos = plt.figure(figsize = (5, 5))
+fig_alojamientos = plt.figure(figsize = (10, 10))
 plt.barh(x, y, color='green')
 plt.xticks(rotation='vertical')
 plt.ylabel('Ciudad')
