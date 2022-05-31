@@ -293,7 +293,6 @@ st.subheader('Average stars by city')
 
 x = df_cities
 y = df_starts_avg
-s = df_starts_avg
 # s = df_starts_count
 
 fig_scatter = plt.figure(figsize = (12, 8))
