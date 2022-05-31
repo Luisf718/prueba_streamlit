@@ -4,3 +4,4 @@ matplotlib
 numpy
 circlify
 plotly
+squarify
