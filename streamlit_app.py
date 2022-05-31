@@ -49,7 +49,7 @@ df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.reset_index()
 df_groupby_ciudad_visitas = df_groupby_ciudad_visitas.sort_values('sum', ascending=False)
 
 #Codigo para visuzalizacion de numero de visitas por ciudad
-st.header('Numero de visitas por ciudad')
+st.header('Number of visits by city')
 x = df_groupby_ciudad_visitas['name']
 y = df_groupby_ciudad_visitas['sum']
 fig_visitas = plt.figure(figsize = (10, 5))
@@ -72,7 +72,7 @@ df_alojamientos_por_ciudad = df_alojamientos_por_ciudad.reset_index()
 #Ordenamos el dataframe para que vaya de manera descendente
 df_alojamientos_por_ciudad = df_alojamientos_por_ciudad.sort_values('count',ascending=False)
 
-st.header('Alojamientos por ciudad')
+st.header('Accommodations by city')
 x = df_alojamientos_por_ciudad['name']
 y = df_alojamientos_por_ciudad['count']
 fig_alojamientos = plt.figure(figsize = (10, 5))
@@ -106,7 +106,7 @@ fig_burbujas, ax = plt.subplots(figsize=(10,10))
 
 # Title
 #Este titulo va dentro de la visualizacion, del cuadro blanco 
-# ax.set_title('Promedio de noches por ciudad')
+# ax.set_title('Average nights per city')
 
 # Remove axes
 ax.axis('off')
