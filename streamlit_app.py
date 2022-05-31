@@ -296,7 +296,8 @@ y = df_starts_avg
 # s = df_starts_count
 
 fig_scatter = plt.figure(figsize = (12, 8))
-plt.scatter(x, y, s, c="b", alpha=0.5, label="Stars")
+# plt.scatter(x, y, s, c="b", alpha=0.5, label="Stars")
+plt.scatter(x, y, c="b", alpha=0.5, label="Stars")
 plt.xlabel("Cities")
 plt.ylabel("Qualification")
 plt.legend(loc='upper left')
