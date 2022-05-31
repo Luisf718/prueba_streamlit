@@ -57,7 +57,7 @@ plt.bar(x, y, color='blue')
 plt.xticks(rotation='vertical')
 plt.xlabel('Ciudad')
 plt.ylabel('Visitas')
-col1, col2 = st.beta_columns((2,1))
+col1, col2 = st. st.columns((2,1))
 
 with col1:
   st.pyplot(fig_visitas)
