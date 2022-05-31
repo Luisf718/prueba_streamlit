@@ -57,7 +57,11 @@ plt.bar(x, y, color='blue')
 plt.xticks(rotation='vertical')
 plt.xlabel('Ciudad')
 plt.ylabel('Visitas')
-st.pyplot(fig_visitas)
+col1, col2 = st.beta_columns((2,1))
+
+with col1:
+  st.pyplot(fig_visitas)
+
 
 """Podemos notar que cancun tiene muchas menos visitas, esto es raro porque en cancun normalmente hay muchos turistas"""
 
@@ -80,7 +84,8 @@ plt.xticks(rotation='vertical')
 plt.ylabel('Ciudad')
 plt.xlabel('Numero de alojamientos')
 plt.title('Alojamientos por ciudad')
-st.pyplot(fig_alojamientos)
+with col2:
+  st.pyplot(fig_alojamientos)
 
 """En esta grafica se muestra que Cancun es donde Airbnb tiene menos alojamientos, esta puede ser una oportunidad para que tengamos mas alojamientos en Cancun y cubrir la
 la demanda"""
