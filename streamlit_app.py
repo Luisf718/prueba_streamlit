@@ -302,9 +302,9 @@ plt.xlabel("Cities")
 plt.ylabel("Qualification")
 plt.legend(loc='upper left')
 
-for i, txt in enumerate(s):
-    x1 = i+0.2
-    plt.annotate(txt, (x1, y[i]))
+# for i, txt in enumerate(s):
+#     x1 = i+0.2
+#     plt.annotate(txt, (x1, y[i]))
 
 st.pyplot(fig_scatter)
 
