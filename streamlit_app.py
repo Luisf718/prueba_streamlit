@@ -216,7 +216,7 @@ st.plotly_chart(fig_piramide_users)
 #Parte de Cristhian 
 # == Min and max prices by city
 
-df_cities = conection_sql('''select min(a.price), max(a.price), c."name"
+df = conection_sql('''select min(a.price), max(a.price), c."name"
    	from public.accommodations a
    	join public.cities c on c.city_id = a.id_city 
    	group by c."name"
