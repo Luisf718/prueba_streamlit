@@ -145,7 +145,7 @@ for circle, label in zip(circles, labels):
     ax.add_patch(plt.Circle((x, y), r, alpha=1, linewidth=2, facecolor=colors[count], edgecolor="black"))
     plt.annotate(label, (x, y),va='center', ha='center', bbox=dict(facecolor=colors[count], edgecolor=colors[count]))
     count+=1
-st.header('Promedio de noches por ciudad')
+st.header('Average nights per city')
 st.pyplot(fig_burbujas)
 
 #Hacemos la visualizacion de el total de los alojamientos
